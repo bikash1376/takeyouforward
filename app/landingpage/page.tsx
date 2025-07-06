@@ -32,6 +32,7 @@ const LandingPage = () => {
     });
 
     const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
+    const [navOpen, setNavOpen] = useState(false);
 
 
     useEffect(() => {
@@ -161,7 +162,7 @@ const LandingPage = () => {
 
     return (
         <motion.div
-            className="min-h-screen bg-black text-white"
+            className="min-h-screen bg-black text-white pt-20 sm:pt-24"
             initial="hidden"
             animate="show"
             variants={fadeIn}
@@ -191,28 +192,31 @@ const LandingPage = () => {
 
                 {/* Header Section */}
                 <motion.header
-                    className="bg-black relative z-10"
+                    className="bg-black fixed top-0 left-0 w-full z-50 shadow-lg"
                     initial={{ y: -80, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.8, ease: easeOut }}
                 >
-                    <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-                        <div className="flex items-center space-x-8">
+                    <div className="container mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0">
+                        <div className="flex items-center justify-between w-full sm:w-auto">
                             {/* Logo */}
                             <div className="text-2xl font-bold">
                                 <Image src="/tuf-logo.png" height={60} width={60} alt="" />
                             </div>
-                            {/* Navigation Links */}
-                            <nav className="hidden md:flex space-x-6">
-                                <a href="#" className="text-gray-300 hover:text-white transition-colors">Home</a>
-                                <a href="#" className="text-gray-300 hover:text-white transition-colors">Pricing</a>
-                                <a href="#" className="text-gray-300 hover:text-white transition-colors">Resources</a>
-                            </nav>
+                            {/* Hamburger */}
+                            <button className="sm:hidden ml-auto" onClick={() => setNavOpen(!navOpen)} aria-label="Toggle navigation">
+                                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                            </button>
                         </div>
-                        <div className="flex items-center space-x-4">
-                            {/* Sign In Button */}
-                            <button className={buttonOutline}>Sign Up</button>
-                            <button className={buttonOutline}>Sign In</button>
+                        {/* Navigation Links */}
+                        <nav className={`flex-col sm:flex-row sm:flex space-y-2 sm:space-y-0 sm:space-x-6 w-full sm:w-auto ${navOpen ? 'flex' : 'hidden sm:flex'} bg-black sm:bg-transparent p-4 sm:p-0 rounded-lg sm:rounded-none z-50`}> 
+                            <a href="#" className="text-gray-300 hover:text-white transition-colors block">Home</a>
+                            <a href="#" className="text-gray-300 hover:text-white transition-colors block">Pricing</a>
+                            <a href="#" className="text-gray-300 hover:text-white transition-colors block">Resources</a>
+                        </nav>
+                        <div className="flex gap-2 mt-2 sm:mt-0">
+                            <button className={buttonOutline + ' text-xs sm:text-sm px-3 sm:px-4 py-2'}>Sign Up</button>
+                            <button className={buttonOutline + ' text-xs sm:text-sm px-3 sm:px-4 py-2'}>Sign In</button>
                         </div>
                     </div>
                 </motion.header>
@@ -222,17 +226,17 @@ const LandingPage = () => {
                     {/* Sub-heading */}
                     <p className="text-gray-400 text-sm mb-2 border-2 rounded-2xl px-2 bg-zinc-900 border-zinc-600">Crafted by Top Engineers</p>
                     {/* Main Heading */}
-                    <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
+                    <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold leading-snug sm:leading-tight mb-4 sm:mb-6">
                         upskill yourself with just <br />
                         <span className="text-orange-500">one subscription.</span>
                     </h1>
                     {/* Description */}
-                    <p className="text-lg text-gray-400 mb-8 max-w-xl">
+                    <p className="text-lg sm:text-xl text-gray-400 mb-6 sm:mb-8 max-w-xs sm:max-w-xl">
                         Make automations with the simplest builder <br />
                         you will ever see
                     </p>
                     {/* Call to Action Button */}
-                    <button className={button3D + ' text-lg'}>
+                    <button className={button3D + ' text-base sm:text-lg px-4 sm:px-6 py-2 sm:py-2'}>
                         <span className={buttonOverlay}></span>
                         <span className={buttonText}>Get Started</span>
                     </button>
@@ -242,7 +246,7 @@ const LandingPage = () => {
 
             {/* Hero Section */}
             <motion.section
-                className="relative overflow-hidden h-screen"
+                className="relative overflow-hidden min-h-[60vh] sm:h-screen"
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.2 }}
@@ -251,7 +255,7 @@ const LandingPage = () => {
                 <div className="absolute inset-0 bg-black"></div>
                 <div className="relative container mx-auto px-4 py-20 text-center">
                     <div className="max-w-4xl mx-auto">
-                        <p className="text-4xl md:text-4xl mb-4 text-gray-300">
+                        <p className="text-2xl sm:text-4xl mb-2 sm:mb-4 text-gray-300">
                             use code <span className='text-4xl text-orange-500'>&quot;payday&quot;</span>
                         </p>
                         <p className="text-sm mb-8 text-zinc-400">
@@ -298,12 +302,12 @@ const LandingPage = () => {
                 variants={fadeInUp}
             >
                 <div className="container mx-auto px-4">
-                    <div className='flex justify-between'>
-                        <div className="mb-16">
-                            <h2 className="text-4xl mb-4 leading-0.5">everything you need</h2>
-                            <p className="text-orange-500 text-4xl">to crack interviews</p>
+                    <div className='flex flex-col sm:flex-row justify-between gap-2 sm:gap-0'>
+                        <div className="mb-8 sm:mb-16">
+                            <h2 className="text-2xl sm:text-4xl mb-2 sm:mb-4 leading-snug sm:leading-0.5">everything you need</h2>
+                            <span className="block text-orange-500 text-2xl sm:text-4xl break-words">to crack interviews</span>
                         </div>
-                        <div className='flex gap-2 items-center '>
+                        <div className='hidden md:flex flex-wrap justify-center gap-2 items-center overflow-x-auto pb-2'>
                             <button className={buttonOutline}>DSA</button>
                             <button className={buttonOutline}>Core</button>
                             <button className={buttonOutline}>System Design</button>
@@ -311,7 +315,7 @@ const LandingPage = () => {
                         </div>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-6 text-left">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mb-6 sm:mb-0">
                         {/* Card 1 */}
                         <div className="bg-zinc-900 rounded-2xl p-6 space-y-4">
                             <h3 className="text-lg font-semibold">DSA</h3>
@@ -356,10 +360,10 @@ const LandingPage = () => {
                 variants={fadeInUp}
             >
                 <div className="container mx-auto px-4">
-                    <div className='flex justify-between'>
-                        <div className="mb-16">
-                            <h2 className="text-4xl mb-4 leading-0.5">compare what</h2>
-                            <p className="text-orange-500 text-4xl">you learn</p>
+                    <div className='flex flex-col sm:flex-row justify-between gap-2 sm:gap-0'>
+                        <div className="mb-8 sm:mb-16">
+                            <h2 className="text-2xl sm:text-4xl mb-2 sm:mb-4 leading-snug sm:leading-0.5">compare what</h2>
+                            <span className="block text-orange-500 text-2xl sm:text-4xl break-words">you learn</span>
                         </div>
                         <div className='flex gap-2 items-center '>
                             <button className={buttonOutline}>TUF free</button>
@@ -369,42 +373,44 @@ const LandingPage = () => {
 
 
 
-                    <div className="max-w-5xl mx-auto rounded-2xl overflow-hidden bg-zinc-900 shadow-lg relative">
-                        {/* Header */}
-                        <div className="grid grid-cols-3 text-sm md:text-base bg-zinc-800 text-white font-semibold px-6 py-4 border-b border-zinc-700">
-                            <div className="">Features</div>
-                            <div className="text-center text-orange-400 font-logo text-lg">TUF</div>
-                            <div className="text-center">Other platforms</div>
-                        </div>
-
-                        {/* Features */}
-                        {[
-                            ['DSA (Basics to Advanced)', 'Yes (Curated list of beginners with practice set)', 'Yes'],
-                            ['Live Content', 'No (Too crowded and chaotic)', 'Yes'],
-                            ['Recorded Content', 'Yes (Broken down to smaller parts to save time)', 'Yes'],
-                            ['DSA (Pattern Wise)', 'Yes', 'No'],
-                            ['1000+ Practice Problems', 'Yes', 'No (Apart from very few)'],
-                            ['Customised Roadmap', 'Yes', 'No'],
-                            ['Course + Platform', 'Yes', 'No (Apart from few dead ones)'],
-                            ['Notes Downloader to Google Docs', 'Yes', 'No'],
-                        ].map((row, i) => (
-                            <div key={i} className="grid grid-cols-3 px-6 py-4 border-b border-zinc-800 text-sm text-gray-300">
-                                <div className="">{row[0]}</div>
-                                <div className="text-center text-white">{row[1]}</div>
-                                <div className="text-center text-white">{row[2]}</div>
+                    <div className="flex flex-wrap justify-between gap-4">
+                        <div className="max-w-full md:max-w-5xl mx-auto rounded-2xl overflow-x-auto bg-zinc-900 shadow-lg relative text-xs sm:text-sm">
+                            {/* Header */}
+                            <div className="grid grid-cols-3 text-sm md:text-base bg-zinc-800 text-white font-semibold px-6 py-4 border-b border-zinc-700">
+                                <div className="">Features</div>
+                                <div className="text-center text-orange-400 font-logo text-lg">TUF</div>
+                                <div className="text-center">Other platforms</div>
                             </div>
-                        ))}
 
-                        {/* Fade effect */}
-                        <div className="absolute bottom-0 left-0 w-full h-80 bg-gradient-to-t from-black to-transparent pointer-events-none z-40" />
+                            {/* Features */}
+                            {[
+                                ['DSA (Basics to Advanced)', 'Yes (Curated list of beginners with practice set)', 'Yes'],
+                                ['Live Content', 'No (Too crowded and chaotic)', 'Yes'],
+                                ['Recorded Content', 'Yes (Broken down to smaller parts to save time)', 'Yes'],
+                                ['DSA (Pattern Wise)', 'Yes', 'No'],
+                                ['1000+ Practice Problems', 'Yes', 'No (Apart from very few)'],
+                                ['Customised Roadmap', 'Yes', 'No'],
+                                ['Course + Platform', 'Yes', 'No (Apart from few dead ones)'],
+                                ['Notes Downloader to Google Docs', 'Yes', 'No'],
+                            ].map((row, i) => (
+                                <div key={i} className="grid grid-cols-3 px-6 py-4 border-b border-zinc-800 text-sm text-gray-300">
+                                    <div className="">{row[0]}</div>
+                                    <div className="text-center text-white">{row[1]}</div>
+                                    <div className="text-center text-white">{row[2]}</div>
+                                </div>
+                            ))}
 
-                        {/* Button */}
+                            {/* Fade effect */}
+                            <div className="absolute bottom-0 left-0 w-full h-80 bg-gradient-to-t from-black to-transparent pointer-events-none z-40" />
 
-                        <div className='text-center'>
-                            <button className={button3D}>
-                                <span className={buttonOverlay}></span>
-                                <span className={buttonText}>Show all features</span>
-                            </button>
+                            {/* Button */}
+
+                            <div className='text-center mb-6 sm:mb-10'>
+                                <button className={button3D}>
+                                    <span className={buttonOverlay}></span>
+                                    <span className={buttonText}>Show all features</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -412,7 +418,7 @@ const LandingPage = () => {
 
             {/* Pricing Section */}
             <motion.section
-                className="py-20 bg-black"
+                className="py-20 bg-black mt-16 sm:mt-24"
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.2 }}
@@ -451,7 +457,7 @@ const LandingPage = () => {
                         </div>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-full md:max-w-6xl mx-auto">
                         {plans.map((plan, index) => (
                             <div key={index} className={`rounded-xl p-8 relative ${plan.popular
                                 ? 'bg-zinc-900 text-white'
@@ -513,7 +519,7 @@ const LandingPage = () => {
                     </div>
                     <div className="relative">
                         {/* Testimonials Grid */}
-                        <div className="grid md:grid-cols-3 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 sm:mb-0">
                             {testimonials.map((testimonial, index) => (
                                 <div key={index} className="bg-zinc-800 rounded-xl p-8">
                                     <div className="flex items-center mb-4">
@@ -540,7 +546,7 @@ const LandingPage = () => {
                         <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent pointer-events-none z-40" />
                     </div>
 
-                    <div className='text-center'>
+                    <div className='text-center mb-6 sm:mb-10'>
                         <button className={button3D}>
                             <span className={buttonOverlay}></span>
                             <span className={buttonText}>See More</span>
@@ -553,7 +559,7 @@ const LandingPage = () => {
 
             {/* FAQ Section */}
             <motion.section
-                className="py-20 bg-black"
+                className="py-20 bg-black mt-16 sm:mt-24"
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.2 }}
@@ -564,20 +570,20 @@ const LandingPage = () => {
                         <p className="text-3xl mb-4 leading-0.5">frequently asked</p>
                         <p className="text-orange-500 text-3xl">questions</p>
                     </div>
-                    <div className="max-w-3xl mx-auto">
+                    <div className="max-w-full md:max-w-3xl mx-auto mb-8 sm:mb-12">
                         {faqs.map((faq, index) => (
                             <div key={index} className="mb-4">
                                 <button
                                     onClick={() => toggleFAQ(index)}
-                                    className="cursor-pointer w-full bg-zinc-900 rounded-lg px-6 py-4 text-left flex items-center justify-between hover:bg-gray-750 transition-colors"
+                                    className="cursor-pointer w-full bg-zinc-900 rounded-lg px-4 sm:px-6 py-3 sm:py-4 text-left flex items-center justify-between hover:bg-gray-750 transition-colors"
+                                    style={{ marginBottom: expandedFAQ === index ? 0 : '0.5rem' }}
                                 >
-                                    <span className="font-normal">{faq.question}</span>
-                                    <ChevronDown className={`w-5 h-5 transition-transform ${expandedFAQ === index ? 'rotate-180' : ''
-                                        }`} />
+                                    <span className="font-normal text-sm sm:text-base">{faq.question}</span>
+                                    <ChevronDown className={`w-5 h-5 transition-transform ${expandedFAQ === index ? 'rotate-180' : ''}`} />
                                 </button>
                                 {expandedFAQ === index && (
-                                    <div className="bg-zinc-900 rounded-b-lg p-6 -mt-2">
-                                        <p className="text-gray-300">{faq.answer}</p>
+                                    <div className="bg-zinc-900 rounded-b-lg p-4 sm:p-6 -mt-2">
+                                        <p className="text-gray-300 text-sm sm:text-base">{faq.answer}</p>
                                     </div>
                                 )}
                             </div>
@@ -615,7 +621,7 @@ const LandingPage = () => {
                 viewport={{ once: true, amount: 0.2 }}
                 variants={fadeIn}
             >
-                <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-5 gap-10">
+                <div className="max-w-full md:max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-10">
                     {/* Left - Logo & Description */}
                     <div className="md:col-span-1">
                         <div className="text-3xl font-bold text-white mb-4">
