@@ -21,7 +21,8 @@ const LandingPage = () => {
         seconds: 26
     });
 
-    const [expandedFAQ, setExpandedFAQ] = useState(null);
+const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
+
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -42,27 +43,11 @@ const LandingPage = () => {
         return () => clearInterval(timer);
     }, []);
 
-    const toggleFAQ = (index:any) => {
+    const toggleFAQ = (index:number) => {
         setExpandedFAQ(expandedFAQ === index ? null : index);
     };
 
-    const features = [
-        {
-            icon: <BookOpen className="w-6 h-6" />,
-            title: "1000+ Coding Problems",
-            description: "Master DSA with our comprehensive problem set"
-        },
-        {
-            icon: <Users className="w-6 h-6" />,
-            title: "Live Classes",
-            description: "Interactive sessions with industry experts"
-        },
-        {
-            icon: <Shield className="w-6 h-6" />,
-            title: "Doubt Support",
-            description: "Get your queries resolved instantly"
-        }
-    ];
+
 
     const plans = [
         {
@@ -145,8 +130,8 @@ const LandingPage = () => {
             answer: "You get lifetime access to all course materials and updates with any paid plan."
         },
         {
-            question: "Can I get a refund if I'm not satisfied?",
-            answer: "Yes, we offer a 30-day money-back guarantee if you're not satisfied with the course."
+            question: "Can I get a refund if I&apos;m not satisfied?",
+            answer: "Yes, we offer a 30-day money-back guarantee if you&apos;re not satisfied with the course."
         },
         {
             question: "Do you provide job placement assistance?",
@@ -160,7 +145,8 @@ const LandingPage = () => {
             <div className="relative min-h-screen bg-black font-sans text-gray-100 overflow-hidden">
                 {/* Background TUF+ Text */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
-                    <img
+                    <Image
+                    height={2000} width={2000}
                         src="/tuf-logo.png"
                         alt="TUF Logo"
                         className="w-full h-full object-cover opacity-10 mx-auto select-none"
@@ -227,10 +213,10 @@ const LandingPage = () => {
                 <div className="relative container mx-auto px-4 py-20 text-center">
                     <div className="max-w-4xl mx-auto">
                         <p className="text-4xl md:text-4xl mb-4 text-gray-300">
-                            use code <span className='text-4xl text-orange-500'>"payday"</span>
+                            use code <span className='text-4xl text-orange-500'>&quot;payday&quot;</span>
                         </p>
                         <p className="text-sm mb-8 text-zinc-400">
-                            <span className='text-zinc-300'>Lifetime Access</span> won't last forever - Grab <br />it while you can
+                            <span className='text-zinc-300'>Lifetime Access</span> won&apos;t last forever - Grab <br />it while you can
                         </p>
 
 
@@ -454,9 +440,9 @@ const LandingPage = () => {
                                             <User className="w-6 h-6 text-gray-400" />
                                         </div>
                                         <div>
-                                            <h4 className="font-semibold">{testimonial.name}</h4>
-                                            <p className="text-sm text-gray-400">{testimonial.role}</p>
-                                            <p className="text-sm text-orange-500">{testimonial.company}</p>
+                                            <h4 className="font-semibold">"{testimonial.name}"</h4>
+                                            <p className="text-sm text-gray-400">"{testimonial.role}"</p>
+                                            <p className="text-sm text-orange-500">"{testimonial.company}"</p>
                                         </div>
                                     </div>
                                     <p className="text-gray-300 italic">"{testimonial.content}"</p>
