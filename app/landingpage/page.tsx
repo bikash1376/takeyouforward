@@ -2,14 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Check, Star, User } from 'lucide-react';
-import { Mitr, Share_Tech_Mono } from 'next/font/google';
+import { Mitr } from 'next/font/google';
 import Image from 'next/image';
 
-const shareTechMono = Share_Tech_Mono({
-    weight: '400',
-    subsets: ['latin'],
-    display: 'swap',
-});
 
 const mitr = Mitr({
     weight: '400',
