@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Check, Star, User } from 'lucide-react';
-import { Share_Tech_Mono } from 'next/font/google';
+import { Mitr, Share_Tech_Mono } from 'next/font/google';
 import Image from 'next/image';
 
 const shareTechMono = Share_Tech_Mono({
@@ -11,6 +11,11 @@ const shareTechMono = Share_Tech_Mono({
     display: 'swap',
 });
 
+const mitr = Mitr({
+    weight: '400',
+    subsets: ['latin'],
+    display: 'swap'
+})
 
 
 const LandingPage = () => {
@@ -149,9 +154,12 @@ const LandingPage = () => {
                         height={2000} width={2000}
                         src="/tuf-logo.png"
                         alt="TUF Logo"
-                        className="w-full h-full object-cover opacity-10 mx-auto select-none"
+                        className="w-full h-full object-cover opacity-20 mx-auto select-none"
                     />
+                    <div className="absolute bottom-0 left-0 w-full h-150 bg-gradient-to-t from-black to-transparent pointer-events-none z-40" />
                 </div>
+
+                
 
 
 
@@ -172,13 +180,13 @@ const LandingPage = () => {
                         </div>
                         <div className="flex items-center space-x-4">
                             {/* Sign In Button */}
-                            <button className="text-gray-300 hover:text-white transition-colors">Sign Up</button>
+                            <button className="text-gray-300 hover:text-white transition-colors cursor-pointer">Sign Up</button>
                             {/* Get Started Button */}
-                            <button className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg transition-colors">
+                            <button className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg transition-colors cursor-pointer">
                                 Sign In
                             </button>
 
-                            <button className="text-gray-300 hover:text-white transition-colors">
+                            <button className="text-gray-300 hover:text-white transition-colors cursor-pointer">
 
                             </button>
                         </div>
@@ -200,7 +208,7 @@ const LandingPage = () => {
                         you will ever see
                     </p>
                     {/* Call to Action Button */}
-                    <button className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg text-lg transition-colors shadow-lg">
+                    <button className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg text-lg transition-colors shadow-lg cursor-pointer">
                         Get Started
                     </button>
                 </main>
@@ -221,7 +229,7 @@ const LandingPage = () => {
 
 
                         {/* Countdown Timer */}
-                        <div className={`mb-4 ${shareTechMono.className}`}>
+                        <div className={`mb-4 ${mitr.className}`}>
                             <div className="flex justify-center space-x-4 text-white">
                                 <div className="rounded-lg p-3 min-w-[60px] text-center">
                                     <div className="text-5xl font-bold">{timeLeft.days.toString().padStart(2, '0')}</div>
@@ -242,7 +250,7 @@ const LandingPage = () => {
                             </div>
                         </div>
 
-                        <button className="bg-orange-500 hover:bg-orange-600 px-6 py-2 rounded-lg transition-colors">
+                        <button className="bg-orange-500 hover:bg-orange-600 px-6 py-2 rounded-lg transition-colors cursor-pointer">
                             Grab Now
                         </button>
                     </div>
@@ -258,10 +266,10 @@ const LandingPage = () => {
                             <p className="text-orange-500 text-4xl">to crack interviews</p>
                         </div>
                         <div className='flex gap-2 items-center '>
-                            <button className='px-4 py-2 rounded-full bg-orange-500'>DSA</button>
-                            <button className='px-4 py-2 rounded-full bg-zinc-800'>Core</button>
-                            <button className='px-4 py-2 rounded-full bg-zinc-800'>System Design</button>
-                            <button className='px-4 py-2 rounded-full bg-zinc-800'>Aptitude</button>
+                            <button className='px-4 py-2 rounded-full bg-orange-500 cursor-pointer'>DSA</button>
+                            <button className='px-4 py-2 rounded-full bg-zinc-800 cursor-pointer'>Core</button>
+                            <button className='px-4 py-2 rounded-full bg-zinc-800 cursor-pointer'>System Design</button>
+                            <button className='px-4 py-2 rounded-full bg-zinc-800 cursor-pointer'>Aptitude</button>
                         </div>
                     </div>
 
@@ -310,8 +318,8 @@ const LandingPage = () => {
                             <p className="text-orange-500 text-4xl">you learn</p>
                         </div>
                         <div className='flex gap-2 items-center '>
-                            <button className='px-4 py-2 rounded-full bg-orange-500'>TUF free</button>
-                            <button className='px-4 py-2 rounded-full bg-zinc-800'>Other platforms</button>
+                            <button className='px-4 py-2 rounded-full bg-orange-500 cursor-pointer'>TUF free</button>
+                            <button className='px-4 py-2 rounded-full bg-zinc-800 cursor-pointer'>Other platforms</button>
 
                         </div>
                     </div>
@@ -362,6 +370,20 @@ const LandingPage = () => {
 
             {/* Pricing Section */}
             <section className="py-20 bg-black">
+            <div className="relative min-h-screen bg-black font-sans text-gray-100 overflow-hidden">
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                    <Image
+                        height={2000} width={2000}
+                        src="/tuf-logo.png"
+                        alt="TUF Logo"
+                        className="w-full h-full object-cover opacity-20 mx-auto select-none"
+                    />
+                    
+                <div className="absolute bottom-0 left-0 w-full h-150 bg-gradient-to-t from-black to-transparent pointer-events-none z-40" />
+                </div>
+
+                
+
                 <div className="container mx-auto px-4">
                     <div>
                         <div className="text-center mb-16 leading-1">
@@ -401,7 +423,7 @@ const LandingPage = () => {
                                         </li>
                                     ))}
                                 </ul>
-                                <button className={`w-full py-3 rounded-lg font-semibold transition-colors ${plan.popular
+                                <button className={`w-full py-3 rounded-lg font-semibold transition-colors cursor-pointer ${plan.popular
                                     ? 'bg-white text-orange-500 hover:bg-gray-100'
                                     : 'bg-orange-500 text-white hover:bg-orange-600'
                                     }`}>
@@ -410,6 +432,7 @@ const LandingPage = () => {
                             </div>
                         ))}
                     </div>
+                </div>
                 </div>
             </section>
 
@@ -483,7 +506,7 @@ const LandingPage = () => {
                             <div key={index} className="mb-4">
                                 <button
                                     onClick={() => toggleFAQ(index)}
-                                    className="w-full bg-zinc-900 rounded-lg px-6 py-4 text-left flex items-center justify-between hover:bg-gray-750 transition-colors"
+                                    className="cursor-pointer w-full bg-zinc-900 rounded-lg px-6 py-4 text-left flex items-center justify-between hover:bg-gray-750 transition-colors"
                                 >
                                     <span className="font-normal">{faq.question}</span>
                                     <ChevronDown className={`w-5 h-5 transition-transform ${expandedFAQ === index ? 'rotate-180' : ''
