@@ -1,8 +1,9 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Check, Star, User, Calendar, Clock, Shield, Zap, BookOpen, Users } from 'lucide-react';
+import { ChevronDown, Check, Star, User, Shield, BookOpen, Users } from 'lucide-react';
 import { Share_Tech_Mono } from 'next/font/google';
+import Image from 'next/image';
 
 const shareTechMono = Share_Tech_Mono({
   weight: '400',
@@ -41,7 +42,7 @@ const LandingPage = () => {
         return () => clearInterval(timer);
     }, []);
 
-    const toggleFAQ = (index) => {
+    const toggleFAQ = (index:any) => {
         setExpandedFAQ(expandedFAQ === index ? null : index);
     };
 
@@ -174,7 +175,7 @@ const LandingPage = () => {
                         <div className="flex items-center space-x-8">
                             {/* Logo */}
                             <div className="text-2xl font-bold">
-                             <img src="/tuf-logo.png" height={60} width={60} alt="" />
+                             <Image src="/tuf-logo.png" height={60} width={60} alt="" />
                             </div>
                             {/* Navigation Links */}
                             <nav className="hidden md:flex space-x-6">
@@ -190,12 +191,9 @@ const LandingPage = () => {
                             <button className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg transition-colors">
                                 Sign In
                             </button>
-                            {/* Sun/Moon Icon (Placeholder for dark/light mode toggle) */}
+                    
                             <button className="text-gray-300 hover:text-white transition-colors">
-                                {/* Using a simple SVG for a sun icon */}
-                                {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h1M3 12h1m15.325-4.243l-.707-.707M4.343 19.343l-.707-.707m12.728 0l-.707.707M6.343 6.343l-.707-.707" />
-                                </svg> */}
+                    
                             </button>
                         </div>
                     </div>
@@ -216,7 +214,7 @@ const LandingPage = () => {
                         you will ever see
                     </p>
                     {/* Call to Action Button */}
-                    <button className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg text-lg font-semibold transition-colors shadow-lg">
+                    <button className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg text-lg transition-colors shadow-lg">
                         Get Started
                     </button>
                 </main>
@@ -224,7 +222,7 @@ const LandingPage = () => {
 
 
             {/* Hero Section */}
-            <section className="relative overflow-hidden">
+            <section className="relative overflow-hidden h-screen">
                 <div className="absolute inset-0 bg-black"></div>
                 <div className="relative container mx-auto px-4 py-20 text-center">
                     <div className="max-w-4xl mx-auto">
@@ -266,7 +264,7 @@ const LandingPage = () => {
             </section>
 
             {/* Features Section */}
-            <section className="py-20 bg-black">
+            <section className="py-20 bg-black h-screen">
                 <div className="container mx-auto px-4">
                     <div className='flex justify-between'>
                         <div className="mb-16">
@@ -318,7 +316,7 @@ const LandingPage = () => {
             </section>
 
             {/* Comparison Table */}
-            <section className="py-20 bg-black">
+            <section className="py-20 bg-black mb-20">
                 <div className="container mx-auto px-4">
                     <div className='flex justify-between'>
                         <div className="mb-16">
@@ -430,13 +428,13 @@ const LandingPage = () => {
             </section>
 
             {/* Testimonials Section */}
-            <section className="py-20 bg-black">
+            <section className="py-20 bg-black h-screen">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl mb-4 leading-0.5">what users have to say</h2>
                      <p className="text-3xl text-orange-500">
   about the v3 launch of{" "}
-  <img
+  <Image
     src="/tuf-logo.png"
     alt="TUF Logo"
     width={70}
@@ -522,10 +520,11 @@ const LandingPage = () => {
       <div className="relative min-h-screen bg-black font-sans text-gray-200 overflow-hidden">
                 {/* Background TUF+ Text */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
-                    <img
+                    <Image
+                    height={9000} width={9000}
                         src="/tuf-logo.png"
                         alt="TUF Logo"
-                        className="w-full h-full object-cover opacity-50 mx-auto select-none"
+                        className="w-full h-full object-cover opacity-40 mx-auto select-none"
                     />
                 </div>
                 </div>
