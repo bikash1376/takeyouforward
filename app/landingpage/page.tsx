@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Check, Star, User, Shield, BookOpen, Users } from 'lucide-react';
+import { ChevronDown, Check, Star, User } from 'lucide-react';
 import { Share_Tech_Mono } from 'next/font/google';
 import Image from 'next/image';
 
@@ -440,12 +440,12 @@ const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
                                             <User className="w-6 h-6 text-gray-400" />
                                         </div>
                                         <div>
-                                            <h4 className="font-semibold">"{testimonial.name}"</h4>
-                                            <p className="text-sm text-gray-400">"{testimonial.role}"</p>
-                                            <p className="text-sm text-orange-500">"{testimonial.company}"</p>
+                                            <h4 className="font-semibold">&quot;{testimonial.name}&quot;</h4>
+                                            <p className="text-sm text-gray-400">&quot;{testimonial.role}&quot;</p>
+                                            <p className="text-sm text-orange-500">&quot;{testimonial.company}&quot;</p>
                                         </div>
                                     </div>
-                                    <p className="text-gray-300 italic">"{testimonial.content}"</p>
+                                    <p className="text-gray-300 italic">&quot;{testimonial.content}&quot;</p>
                                     <div className="flex mt-4">
                                         {[...Array(5)].map((_, i) => (
                                             <Star key={i} className="w-4 h-4 text-orange-500 fill-current" />
@@ -550,10 +550,10 @@ const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
                     <div>
                         <h4 className="text-orange-500 uppercase text-sm font-semibold mb-4 tracking-wider">Quick Access</h4>
                         <ul className="space-y-2 text-sm">
-                            <li><a href="#">Striver's DSA Sheet</a></li>
+                            <li><a href="#">Striver&apos;s DSA Sheet</a></li>
                             <li><a href="#">Technical Blogs</a></li>
                             <li><a href="#">CS Subjects</a></li>
-                            <li><a href="#">Striver's CP Sheet</a></li>
+                            <li><a href="#">Striver&apos;s CP Sheet</a></li>
                         </ul>
                     </div>
 
@@ -561,10 +561,10 @@ const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
                     <div>
                         <h4 className="text-orange-500 uppercase text-sm font-semibold mb-4 tracking-wider">DSA Sheets</h4>
                         <ul className="space-y-2 text-sm">
-                            <li><a href="#">Striver's SDE Sheet</a></li>
-                            <li><a href="#">Striver's A2Z DSA Playlist</a></li>
+                            <li><a href="#">Striver&apos;s SDE Sheet</a></li>
+                            <li><a href="#">Striver&apos;s A2Z DSA Playlist</a></li>
                             <li><a href="#">SDE Core Sheet</a></li>
-                            <li><a href="#">Striver's CP Sheet</a></li>
+                            <li><a href="#">Striver&apos;s CP Sheet</a></li>
                         </ul>
                     </div>
 
