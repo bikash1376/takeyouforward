@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { ChevronDown, Check, Star, User } from 'lucide-react';
 import { Mitr } from 'next/font/google';
 import Image from 'next/image';
+import { motion, easeOut } from 'framer-motion';
 
 
 const mitr = Mitr({
@@ -12,6 +13,15 @@ const mitr = Mitr({
     display: 'swap'
 })
 
+const fadeInUp = {
+    hidden: { opacity: 0, y: 40 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: easeOut } }
+};
+
+const fadeIn = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { duration: 0.7, ease: easeOut } }
+};
 
 const LandingPage = () => {
     const [timeLeft, setTimeLeft] = useState({
@@ -139,10 +149,31 @@ const LandingPage = () => {
         }
     ];
 
+    // Add a reusable button class for 3D gradient effect (primary CTA)
+    const button3D =
+        'relative z-50 bg-gradient-to-b from-orange-400 to-orange-600 text-white font-semibold px-6 py-2 rounded-full shadow-md hover:from-orange-500 hover:to-orange-700 transition-all duration-200 cursor-pointer';
+    const buttonOverlay =
+        'absolute inset-0 rounded-full bg-white/10 mix-blend-overlay pointer-events-none';
+    const buttonText = 'relative z-10';
+    // Outlined/secondary button style
+    const buttonOutline =
+        'border border-orange-500 text-orange-500 font-semibold px-6 py-2 rounded-full hover:bg-orange-500 hover:text-white transition-all duration-200 cursor-pointer bg-transparent';
+
     return (
-        <div className="min-h-screen bg-black text-white">
+        <motion.div
+            className="min-h-screen bg-black text-white"
+            initial="hidden"
+            animate="show"
+            variants={fadeIn}
+        >
             {/* Header */}
-            <div className="relative min-h-screen bg-black font-sans text-gray-100 overflow-hidden">
+            <motion.div
+                className="relative min-h-screen bg-black font-sans text-gray-100 overflow-hidden"
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeInUp}
+            >
                 {/* Background TUF+ Text */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <Image
@@ -159,7 +190,12 @@ const LandingPage = () => {
 
 
                 {/* Header Section */}
-                <header className="bg-black relative z-10">
+                <motion.header
+                    className="bg-black relative z-10"
+                    initial={{ y: -80, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, ease: easeOut }}
+                >
                     <div className="container mx-auto px-4 py-4 flex items-center justify-between">
                         <div className="flex items-center space-x-8">
                             {/* Logo */}
@@ -175,18 +211,11 @@ const LandingPage = () => {
                         </div>
                         <div className="flex items-center space-x-4">
                             {/* Sign In Button */}
-                            <button className="text-gray-300 hover:text-white transition-colors cursor-pointer">Sign Up</button>
-                            {/* Get Started Button */}
-                            <button className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg transition-colors cursor-pointer">
-                                Sign In
-                            </button>
-
-                            <button className="text-gray-300 hover:text-white transition-colors cursor-pointer">
-
-                            </button>
+                            <button className={buttonOutline}>Sign Up</button>
+                            <button className={buttonOutline}>Sign In</button>
                         </div>
                     </div>
-                </header>
+                </motion.header>
 
                 {/* Main Content Section */}
                 <main className="flex flex-col items-center justify-center text-center py-20 px-4 relative z-10 mt-11">
@@ -203,15 +232,22 @@ const LandingPage = () => {
                         you will ever see
                     </p>
                     {/* Call to Action Button */}
-                    <button className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg text-lg transition-colors shadow-lg cursor-pointer">
-                        Get Started
+                    <button className={button3D + ' text-lg'}>
+                        <span className={buttonOverlay}></span>
+                        <span className={buttonText}>Get Started</span>
                     </button>
                 </main>
-            </div>
+            </motion.div>
 
 
             {/* Hero Section */}
-            <section className="relative overflow-hidden h-screen">
+            <motion.section
+                className="relative overflow-hidden h-screen"
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeInUp}
+            >
                 <div className="absolute inset-0 bg-black"></div>
                 <div className="relative container mx-auto px-4 py-20 text-center">
                     <div className="max-w-4xl mx-auto">
@@ -245,15 +281,22 @@ const LandingPage = () => {
                             </div>
                         </div>
 
-                        <button className="bg-orange-500 hover:bg-orange-600 px-6 py-2 rounded-lg transition-colors cursor-pointer">
-                            Grab Now
+                        <button className={button3D}>
+                            <span className={buttonOverlay}></span>
+                            <span className={buttonText}>Grab Now</span>
                         </button>
                     </div>
                 </div>
-            </section>
+            </motion.section>
 
             {/* Features Section */}
-            <section className="py-20 bg-black h-screen">
+            <motion.section
+                className="py-20 bg-black h-screen"
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeInUp}
+            >
                 <div className="container mx-auto px-4">
                     <div className='flex justify-between'>
                         <div className="mb-16">
@@ -261,10 +304,10 @@ const LandingPage = () => {
                             <p className="text-orange-500 text-4xl">to crack interviews</p>
                         </div>
                         <div className='flex gap-2 items-center '>
-                            <button className='px-4 py-2 rounded-full bg-orange-500 cursor-pointer'>DSA</button>
-                            <button className='px-4 py-2 rounded-full bg-zinc-800 cursor-pointer'>Core</button>
-                            <button className='px-4 py-2 rounded-full bg-zinc-800 cursor-pointer'>System Design</button>
-                            <button className='px-4 py-2 rounded-full bg-zinc-800 cursor-pointer'>Aptitude</button>
+                            <button className={buttonOutline}>DSA</button>
+                            <button className={buttonOutline}>Core</button>
+                            <button className={buttonOutline}>System Design</button>
+                            <button className={buttonOutline}>Aptitude</button>
                         </div>
                     </div>
 
@@ -302,10 +345,16 @@ const LandingPage = () => {
                     </div>
 
                 </div>
-            </section>
+            </motion.section>
 
             {/* Comparison Table */}
-            <section className="py-20 bg-black mb-20">
+            <motion.section
+                className="py-20 bg-black mb-20"
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeInUp}
+            >
                 <div className="container mx-auto px-4">
                     <div className='flex justify-between'>
                         <div className="mb-16">
@@ -313,9 +362,8 @@ const LandingPage = () => {
                             <p className="text-orange-500 text-4xl">you learn</p>
                         </div>
                         <div className='flex gap-2 items-center '>
-                            <button className='px-4 py-2 rounded-full bg-orange-500 cursor-pointer'>TUF free</button>
-                            <button className='px-4 py-2 rounded-full bg-zinc-800 cursor-pointer'>Other platforms</button>
-
+                            <button className={buttonOutline}>TUF free</button>
+                            <button className={buttonOutline}>Other platforms</button>
                         </div>
                     </div>
 
@@ -353,19 +401,30 @@ const LandingPage = () => {
                         {/* Button */}
 
                         <div className='text-center'>
-                            <button className=" relative z-50 bg-gradient-to-b from-orange-400 to-orange-600 text-white font-semibold px-6 py-2 rounded-full shadow-md hover:from-orange-300 hover:to-orange-500 transition-all duration-200">
-                                <span className=" absolute inset-0 rounded-full bg-white/10 mix-blend-overlay pointer-events-none"></span>
-                                <span className="relative z-10">Show all features</span>
+                            <button className={button3D}>
+                                <span className={buttonOverlay}></span>
+                                <span className={buttonText}>Show all features</span>
                             </button>
-
                         </div>
                     </div>
                 </div>
-            </section>
+            </motion.section>
 
             {/* Pricing Section */}
-            <section className="py-20 bg-black">
-            <div className="relative min-h-screen bg-black font-sans text-gray-100 overflow-hidden">
+            <motion.section
+                className="py-20 bg-black"
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeInUp}
+            >
+            <motion.div
+                className="relative min-h-screen bg-black font-sans text-gray-100 overflow-hidden"
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeInUp}
+            >
             <div className="absolute inset-0 z-0 pointer-events-none">
                     <Image
                         height={2000} width={2000}
@@ -418,21 +477,25 @@ const LandingPage = () => {
                                         </li>
                                     ))}
                                 </ul>
-                                <button className={`w-full py-3 rounded-lg font-semibold transition-colors cursor-pointer ${plan.popular
-                                    ? 'bg-white text-orange-500 hover:bg-gray-100'
-                                    : 'bg-orange-500 text-white hover:bg-orange-600'
-                                    }`}>
-                                    {plan.name === 'Custom' ? 'Contact Us' : 'Get Started'}
+                                <button className={button3D + ' w-full py-3'}>
+                                    <span className={buttonOverlay}></span>
+                                    <span className={buttonText}>{plan.name === 'Custom' ? 'Contact Us' : 'Get Started'}</span>
                                 </button>
                             </div>
                         ))}
                     </div>
                 </div>
-                </div>
-            </section>
+                </motion.div>
+            </motion.section>
 
             {/* Testimonials Section */}
-            <section className="py-20 bg-black h-screen">
+            <motion.section
+                className="py-20 bg-black h-screen"
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeInUp}
+            >
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl mb-4 leading-0.5">what users have to say</h2>
@@ -478,19 +541,24 @@ const LandingPage = () => {
                     </div>
 
                     <div className='text-center'>
-                        <button className=" relative z-50 bg-gradient-to-b from-orange-400 to-orange-600 text-white font-semibold px-6 py-2 rounded-full shadow-md hover:from-orange-500 hover:to-orange-700 transition-all duration-200 cursor-pointer">
-                            <span className=" absolute inset-0 rounded-full bg-white/10 mix-blend-overlay pointer-events-none"></span>
-                            <span className="relative z-10">See More</span>
+                        <button className={button3D}>
+                            <span className={buttonOverlay}></span>
+                            <span className={buttonText}>See More</span>
                         </button>
-
                     </div>
 
 
                 </div>
-            </section>
+            </motion.section>
 
             {/* FAQ Section */}
-            <section className="py-20 bg-black">
+            <motion.section
+                className="py-20 bg-black"
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeInUp}
+            >
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-16">
                         <p className="text-3xl mb-4 leading-0.5">frequently asked</p>
@@ -516,12 +584,18 @@ const LandingPage = () => {
                         ))}
                     </div>
                 </div>
-            </section>
+            </motion.section>
 
 
 
 
-            <div className="relative min-h-screen bg-black font-sans text-gray-200 overflow-hidden">
+            <motion.div
+                className="relative min-h-screen bg-black font-sans text-gray-200 overflow-hidden"
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeIn}
+            >
                 {/* Background TUF+ Text */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <Image
@@ -531,10 +605,16 @@ const LandingPage = () => {
                         className="w-full h-full object-cover opacity-40 mx-auto select-none"
                     />
                 </div>
-            </div>
+            </motion.div>
 
             {/* Footer */}
-            <footer className="bg-[#0a0a0a] text-gray-400 py-12">
+            <motion.footer
+                className="bg-[#0a0a0a] text-gray-400 py-12"
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeIn}
+            >
                 <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-5 gap-10">
                     {/* Left - Logo & Description */}
                     <div className="md:col-span-1">
@@ -606,9 +686,9 @@ const LandingPage = () => {
                 <div className="text-center text-xs text-zinc-600 mt-10 border-t border-zinc-800 pt-6">
                     &copy; 2025 TUF. All rights reserved.
                 </div>
-            </footer>
+            </motion.footer>
 
-        </div>
+        </motion.div>
     );
 };
 
