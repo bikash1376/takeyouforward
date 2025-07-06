@@ -6,9 +6,9 @@ import { Share_Tech_Mono } from 'next/font/google';
 import Image from 'next/image';
 
 const shareTechMono = Share_Tech_Mono({
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap',
+    weight: '400',
+    subsets: ['latin'],
+    display: 'swap',
 });
 
 
@@ -21,7 +21,7 @@ const LandingPage = () => {
         seconds: 26
     });
 
-const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
+    const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
 
 
     useEffect(() => {
@@ -43,7 +43,7 @@ const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
         return () => clearInterval(timer);
     }, []);
 
-    const toggleFAQ = (index:number) => {
+    const toggleFAQ = (index: number) => {
         setExpandedFAQ(expandedFAQ === index ? null : index);
     };
 
@@ -146,7 +146,7 @@ const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
                 {/* Background TUF+ Text */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <Image
-                    height={2000} width={2000}
+                        height={2000} width={2000}
                         src="/tuf-logo.png"
                         alt="TUF Logo"
                         className="w-full h-full object-cover opacity-10 mx-auto select-none"
@@ -161,7 +161,7 @@ const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
                         <div className="flex items-center space-x-8">
                             {/* Logo */}
                             <div className="text-2xl font-bold">
-                             <Image src="/tuf-logo.png" height={60} width={60} alt="" />
+                                <Image src="/tuf-logo.png" height={60} width={60} alt="" />
                             </div>
                             {/* Navigation Links */}
                             <nav className="hidden md:flex space-x-6">
@@ -177,9 +177,9 @@ const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
                             <button className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg transition-colors">
                                 Sign In
                             </button>
-                    
+
                             <button className="text-gray-300 hover:text-white transition-colors">
-                    
+
                             </button>
                         </div>
                     </div>
@@ -221,26 +221,26 @@ const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
 
 
                         {/* Countdown Timer */}
-                       <div className={`mb-4 ${shareTechMono.className}`}>
-  <div className="flex justify-center space-x-4 text-white">
-    <div className="rounded-lg p-3 min-w-[60px] text-center">
-      <div className="text-5xl font-bold">{timeLeft.days.toString().padStart(2, '0')}</div>
-      <div className="text-xs text-gray-400 tracking-wide">DAYS</div>
-    </div>
-    <div className="rounded-lg p-3 min-w-[60px] text-center">
-      <div className="text-5xl font-bold">{timeLeft.hours.toString().padStart(2, '0')}</div>
-      <div className="text-xs text-gray-400 tracking-wide">HOURS</div>
-    </div>
-    <div className="rounded-lg p-3 min-w-[60px] text-center">
-      <div className="text-5xl font-bold">{timeLeft.minutes.toString().padStart(2, '0')}</div>
-      <div className="text-xs text-gray-400 tracking-wide">MIN</div>
-    </div>
-    <div className="rounded-lg p-3 min-w-[60px] text-center">
-      <div className="text-5xl font-bold">{timeLeft.seconds.toString().padStart(2, '0')}</div>
-      <div className="text-xs text-gray-400 tracking-wide">SEC</div>
-    </div>
-  </div>
-</div>
+                        <div className={`mb-4 ${shareTechMono.className}`}>
+                            <div className="flex justify-center space-x-4 text-white">
+                                <div className="rounded-lg p-3 min-w-[60px] text-center">
+                                    <div className="text-5xl font-bold">{timeLeft.days.toString().padStart(2, '0')}</div>
+                                    <div className="text-xs text-gray-400 tracking-wide">DAYS</div>
+                                </div>
+                                <div className="rounded-lg p-3 min-w-[60px] text-center">
+                                    <div className="text-5xl font-bold">{timeLeft.hours.toString().padStart(2, '0')}</div>
+                                    <div className="text-xs text-gray-400 tracking-wide">HOURS</div>
+                                </div>
+                                <div className="rounded-lg p-3 min-w-[60px] text-center">
+                                    <div className="text-5xl font-bold">{timeLeft.minutes.toString().padStart(2, '0')}</div>
+                                    <div className="text-xs text-gray-400 tracking-wide">MIN</div>
+                                </div>
+                                <div className="rounded-lg p-3 min-w-[60px] text-center">
+                                    <div className="text-5xl font-bold">{timeLeft.seconds.toString().padStart(2, '0')}</div>
+                                    <div className="text-xs text-gray-400 tracking-wide">SEC</div>
+                                </div>
+                            </div>
+                        </div>
 
                         <button className="bg-orange-500 hover:bg-orange-600 px-6 py-2 rounded-lg transition-colors">
                             Grab Now
@@ -254,7 +254,7 @@ const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
                 <div className="container mx-auto px-4">
                     <div className='flex justify-between'>
                         <div className="mb-16">
-                            <h2 className="text-4xl mb-4">everything you need</h2>
+                            <h2 className="text-4xl mb-4 leading-0.5">everything you need</h2>
                             <p className="text-orange-500 text-4xl">to crack interviews</p>
                         </div>
                         <div className='flex gap-2 items-center '>
@@ -306,7 +306,7 @@ const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
                 <div className="container mx-auto px-4">
                     <div className='flex justify-between'>
                         <div className="mb-16">
-                            <h2 className="text-4xl mb-4">compare what</h2>
+                            <h2 className="text-4xl mb-4 leading-0.5">compare what</h2>
                             <p className="text-orange-500 text-4xl">you learn</p>
                         </div>
                         <div className='flex gap-2 items-center '>
@@ -418,16 +418,16 @@ const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl mb-4 leading-0.5">what users have to say</h2>
-                     <p className="text-3xl text-orange-500">
-  about the v3 launch of{" "}
-  <Image
-    src="/tuf-logo.png"
-    alt="TUF Logo"
-    width={70}
-    height={70}
-    className="inline align-middle h-12 w-auto"
-  />
-</p>
+                        <p className="text-3xl text-orange-500">
+                            about the v3 launch of{" "}
+                            <Image
+                                src="/tuf-logo.png"
+                                alt="TUF Logo"
+                                width={70}
+                                height={70}
+                                className="inline align-middle h-12 w-auto"
+                            />
+                        </p>
 
                     </div>
                     <div className="relative">
@@ -500,20 +500,20 @@ const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
                 </div>
             </section>
 
-            
 
-    
-      <div className="relative min-h-screen bg-black font-sans text-gray-200 overflow-hidden">
+
+
+            <div className="relative min-h-screen bg-black font-sans text-gray-200 overflow-hidden">
                 {/* Background TUF+ Text */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <Image
-                    height={9000} width={9000}
+                        height={9000} width={9000}
                         src="/tuf-logo.png"
                         alt="TUF Logo"
                         className="w-full h-full object-cover opacity-40 mx-auto select-none"
                     />
                 </div>
-                </div>
+            </div>
 
             {/* Footer */}
             <footer className="bg-[#0a0a0a] text-gray-400 py-12">
@@ -521,16 +521,21 @@ const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
                     {/* Left - Logo & Description */}
                     <div className="md:col-span-1">
                         <div className="text-3xl font-bold text-white mb-4">
-                            TUF<span className="text-orange-500">↗</span>
+                        <Image
+                        height={70} width={70}
+                        src="/tuf-logo.png"
+                        alt="TUF Logo"
+                       
+                    />
                         </div>
                         <p className="text-sm mb-4 leading-relaxed">
                             The best place to learn <span className="text-white font-medium">data Structures, algorithms, most asked coding interview questions, real interview experiences</span>{' '}
                             <span className="text-orange-500 font-medium">free of cost.</span>
                         </p>
-                        <div className="flex items-center space-x-2">
+                        {/* <div className="flex items-center space-x-2">
                             <div className="w-3 h-3 bg-green-500 rounded-full" />
                             <p className="text-sm">All systems are operational</p>
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* Company */}
